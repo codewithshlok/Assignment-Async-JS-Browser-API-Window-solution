@@ -1,0 +1,63 @@
+Q4.Compare Promises to callbacks and discuss why Promises are preferred for managing asynchronous
+code.
+Answer - Promises and callbacks are both mechanisms for managing asynchronous code in JavaScript. However, Promises offer several advantages over traditional callbacks, making them preferred in many cases:
+
+1. Readability: Promises provide a more readable and understandable way to handle asynchronous operations compared to nested callbacks. With Promises, you can chain asynchronous operations using .then() methods, making the code more linear and easier to follow, especially when dealing with multiple asynchronous tasks.
+
+// Javascript 
+// Using callbacks
+doSomething(function(result) {
+    doSomethingElse(result, function(newResult) {
+        doAnotherThing(newResult, function(finalResult) {
+            console.log(finalResult);
+        });
+    });
+});
+
+// Using Promises
+doSomething()
+    .then(doSomethingElse)
+    .then(doAnotherThing)
+    .then(finalResult => {
+        console.log(finalResult);
+    });
+
+
+2. Error Handling: Promises have built-in support for error handling through the .catch() method, allowing you to handle errors in a centralized manner at the end of the Promise chain. This makes error handling more consistent and easier to manage compared to callbacks, where error handling often involves nested if-else blocks.
+
+// JavaScript
+// Using callbacks
+doSomething(function(result) {
+    doSomethingElse(result, function(newResult) {
+        doAnotherThing(newResult, function(finalResult) {
+            console.log(finalResult);
+        }, function(error) {
+            console.error(error);
+        });
+    }, function(error) {
+        console.error(error);
+    });
+}, function(error) {
+    console.error(error);
+});
+
+// Using Promises
+doSomething()
+    .then(doSomethingElse)
+    .then(doAnotherThing)
+    .then(finalResult => {
+        console.log(finalResult);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+
+
+
+3. Avoiding Callback Hell: Promises help prevent "callback hell," a situation where deeply nested callbacks become difficult to manage and maintain. By chaining Promises, you can achieve the same functionality without the need for deeply nested callback functions, leading to cleaner and more maintainable code.
+
+4. Composition: Promises support composition, allowing you to combine multiple asynchronous operations into a single Promise chain. This enables better modularity and reusability of asynchronous code, as individual Promise-based functions can be easily composed to create more complex asynchronous workflows.
+
+5. Synchronous Error Handling: With Promises, errors thrown within the Promise chain are automatically caught and propagated to the nearest .catch() handler. This behavior simplifies error handling and makes it more intuitive compared to callbacks, where errors need to be manually propagated or handled at each level of the callback chain.
+
+Overall, Promises offer a more elegant and robust solution for managing asynchronous code in JavaScript, with better readability, error handling, and composability compared to traditional callback-based approaches. As a result, Promises are generally preferred for handling asynchronous operations in modern JavaScript applications.

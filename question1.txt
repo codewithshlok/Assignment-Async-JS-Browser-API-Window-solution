@@ -1,0 +1,46 @@
+Q1. Define XMLHttpRequest object, and How is it used in AJAX?
+Answer - The XMLHttpRequest object is a built-in JavaScript object that provides an easy way to make asynchronous HTTP requests to a server from a web page. It allows the web page to dynamically update content without reloading the entire page, which is a fundamental aspect of AJAX (Asynchronous JavaScript and XML) technology.
+
+Here's a brief overview of how the XMLHttpRequest object is used in AJAX:
+
+1. Create an instance of XMLHttpRequest: First, you create an instance of the XMLHttpRequest object using the new keyword.
+
+
+//javascript 
+var xhr = new XMLHttpRequest();
+
+
+2. Specify the request details: You need to specify the details of the HTTP request, such as the method (GET, POST, etc.), the URL of the server-side script or resource, and whether the request should be asynchronous.
+
+
+//javascript 
+xhr.open('GET', 'example.com/data', true);
+
+
+3. Set up event handlers: You can set up event handlers to monitor the state of the request and handle its response.
+
+//javascript 
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+            // Request completed successfully
+            console.log(xhr.responseText);
+        } else {
+            // Error handling
+            console.error('Request failed: ' + xhr.status);
+        }
+    }
+};
+
+
+
+4. Send the request: After setting up the request details and event handlers, you send the request to the server.
+
+//javascript 
+xhr.send();
+
+
+
+5. Handle the response: Once the server processes the request and sends back a response, the onreadystatechange event handler triggers. You can then handle the response accordingly, whether it's updating the page content, processing data, or displaying an error message.
+
+The XMLHttpRequest object essentially serves as the backbone for making asynchronous HTTP requests in AJAX applications, enabling the dynamic and seamless updating of web page content. However, modern web development often uses newer APIs like fetch() or libraries like Axios, which offer more features and a simpler syntax for handling asynchronous requests.

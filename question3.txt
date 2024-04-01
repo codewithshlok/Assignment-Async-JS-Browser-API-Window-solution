@@ -1,0 +1,14 @@
+Q3. What is the same-origin policy in the context of AJAX requests, and how can you work around it?
+Answer - The same-origin policy is a security measure implemented by web browsers to prevent scripts running on one origin (domain) from accessing resources from a different origin. An origin is defined by the combination of the protocol (e.g., http, https), domain, and port number. The purpose of this policy is to prevent malicious scripts from accessing sensitive data from other websites without permission.
+
+In the context of AJAX requests, the same-origin policy restricts XMLHttpRequest and Fetch API requests to the same origin as the origin of the script that made the request. This means that by default, you can only make AJAX requests to URLs that have the same origin as the web page making the request.
+
+However, there are a few ways to work around the same-origin policy:
+
+1. Cross-Origin Resource Sharing (CORS): CORS is a mechanism that allows servers to specify which origins are allowed to access their resources. If the server you are trying to access supports CORS, it will include specific HTTP headers in its responses to indicate which origins are permitted to access the resource. This allows you to make cross-origin requests from your web page.
+
+2. JSONP (JSON with Padding): JSONP is a technique used to bypass the same-origin policy by exploiting the fact that script tags are not subject to the same-origin policy. With JSONP, the server wraps the JSON response in a function call specified by the client. The server then returns the response as a script, which the client can execute. JSONP is primarily used for GET requests and is not as secure as CORS, as it can expose your website to potential security vulnerabilities if not implemented carefully.
+
+3. Proxy Server: You can set up a server-side proxy to fetch data from a different origin on behalf of your client-side script. The client-side script makes requests to the proxy server, which in turn forwards the requests to the desired origin. The proxy server then retrieves the responses and sends them back to the client-side script. This way, the requests appear to come from the same origin as the web page, bypassing the same-origin policy.
+
+4. Server-Side Request: If you have control over the server, you can configure it to fetch data from other origins and then provide that data to your client-side script upon request. This way, the client-side script only communicates with the same origin, and the server handles cross-origin requests internally.

@@ -1,0 +1,41 @@
+Q6.Describe the purpose and usage of the localStorage and sessionStorage APIs in web development. Give
+suitable examples for each.
+Answer - The localStorage and sessionStorage APIs are part of the Web Storage API and provide mechanisms for storing key-value pairs locally in the browser. Both APIs offer similar functionalities but differ in terms of the duration of data persistence and scope.
+
+1. localStorage:
+
+Purpose: The localStorage API allows developers to store data persistently in the browser's local storage. The data stored using localStorage remains available even after the browser is closed and reopened, providing a long-term storage solution.
+
+Usage: Developers can use localStorage.setItem(key, value) to store data and localStorage.getItem(key) to retrieve data. Data stored in localStorage is associated with the origin (protocol, domain, and port) of the web page, and it remains accessible across browser sessions until explicitly cleared by the user or the application.
+
+Example:
+
+// JavaScript
+
+// Storing data in localStorage
+localStorage.setItem('username', 'john_doe');
+
+// Retrieving data from localStorage
+var username = localStorage.getItem('username');
+console.log('Username:', username); // Output: Username: john_doe
+
+
+2. sessionStorage:
+
+Purpose: The sessionStorage API provides a similar key-value storage mechanism as localStorage, but with a session-based scope. Data stored using sessionStorage remains available only for the duration of the browser session. Once the browser session ends (e.g., the browser window/tab is closed), the stored data is cleared automatically.
+
+Usage: The usage of sessionStorage is similar to localStorage, with methods like sessionStorage.setItem(key, value) to store data and sessionStorage.getItem(key) to retrieve data. Data stored in sessionStorage is also associated with the origin of the web page and is accessible only within the same browsing session.
+
+Example:
+
+//Javascript 
+
+// Storing data in sessionStorage
+sessionStorage.setItem('cartTotal', '50');
+
+// Retrieving data from sessionStorage
+var cartTotal = sessionStorage.getItem('cartTotal');
+console.log('Cart Total:', cartTotal); // Output: Cart Total: 50
+
+
+Both localStorage and sessionStorage provide convenient ways to store small amounts of data locally in the browser, offering benefits such as improved performance, reduced server load, and enhanced user experience. Developers commonly use these APIs for storing user preferences, session data, authentication tokens, shopping cart items, and other transient or persistent application data.
